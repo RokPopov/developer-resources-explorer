@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useSelector } from "react-redux";
+import "./App.css";
+
+const selectDevelopers = (state) => {
+  return state.developers.length;
+};
+
+const selectResources = (state) => {
+  return state.resources.length;
+};
 
 function App() {
+  const developers = useSelector(selectDevelopers);
+  const resources = useSelector(selectResources);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Web Development Resources</h1>
+      <div className="statistics">
+        <div>
+          <div className="statistic">
+            <strong>{developers}</strong>{" "}
+          </div>
+          <p className="statistic">developers</p>
+        </div>
+        <div>
+          <div className="statistic">
+            <strong>{resources} </strong>
+          </div>
+          <p className="statistic">resources</p>
+        </div>
+      </div>
     </div>
   );
 }
